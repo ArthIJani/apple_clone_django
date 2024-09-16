@@ -1,0 +1,127 @@
+{% load static %}
+
+{% block extra_head %}
+<style>
+    .carousel-item {
+        transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
+    }
+    .side-preview {
+        filter: brightness(50%);
+    }
+</style>
+{% endblock %}
+
+<div id="carousel" class="relative w-full h-[700px] overflow-hidden">
+    <div id="carouselTrack" class="flex h-full transition-transform duration-500 ease-in-out">
+        <!-- Carousel items will be inserted here by JavaScript -->
+    </div>
+    <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2" id="navDots"></div>
+</div>
+
+
+<script>
+    const carouselData = [
+    { title: "Bad Monkey", description: "Thriller • Emmy® Award winner", image: "{% static 'images/imageCarousel/BadMonkey.jpg' %}" },
+    { title: "Slow Horses", description: "Thriller • Emmy® Award winner", image: "{% static 'images/imageCarousel/SlowHorses.jpg' %}" },
+    { title: "The Instigators", description: "Drama • Award-winning series", image: "{% static 'images/imageCarousel/TheInstigators.jpg' %}" },
+    { title: "The Morning Show", description: "Drama • Award-winning series", image: "{% static 'images/imageCarousel/TheMorningShow.jpg' %}" },
+];
+
+const carousel = document.getElementById('carousel');
+const carouselTrack = document.getElementById('carouselTrack');
+const navDots = document.getElementById('navDots');
+let currentIndex = 0;
+let intervalId;
+
+function createCarouselItem(data) {
+    const item = document.createElement('div');
+    item.className = 'carousel-item flex-shrink-0 w-full h-full relative';
+    item.innerHTML = `
+        <img src="${data.image}" alt="${data.title}" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-8 flex items-center">
+            <div class="text-white">
+                <h2 class="text-4xl font-bold mb-2">${data.title} <span class="text-xl">${data.description}</span></h2>
+            </div>
+            <button class="bg-white text-black py-3 px-6 rounded-full hover:bg-opacity-80 transition-colors duration-300 ml-4">Stream now</button>
+        </div>
+    `;
+    return item;
+}
+
+function createNavDot(index) {
+    const dot = document.createElement('button');
+    dot.className = `w-2 h-2 rounded-full transition-all ${index === 0 ? 'w-8 bg-white' : 'bg-gray-500'}`;
+    dot.onclick = () => goToSlide(index);
+    return dot;
+}
+
+function setupCarousel() {
+    carouselData.forEach((data) => {
+        carouselTrack.appendChild(createCarouselItem(data));
+    });
+
+    carouselData.forEach((_, index) => {
+        navDots.appendChild(createNavDot(index));
+    });
+
+    updateCarousel();
+}
+
+function updateCarousel() {
+    const items = carouselTrack.querySelectorAll('.carousel-item');
+    const dots = navDots.querySelectorAll('button');
+
+    items.forEach((item, index) => {
+        if (index === currentIndex) {
+            item.style.transform = 'scale(1)';
+            item.classList.remove('side-preview');
+        } else {
+            item.style.transform = index < currentIndex ? 'scale(0.9) translateX(10%)' : 'scale(0.9) translateX(-10%)';
+            item.classList.add('side-preview');
+        }
+    });
+
+    dots.forEach((dot, index) => {
+        if (index === currentIndex) {
+            dot.classList.add('w-8', 'bg-white');
+            dot.classList.remove('bg-gray-500');
+        } else {
+            dot.classList.remove('w-8', 'bg-white');
+            dot.classList.add('bg-gray-500');
+        }
+    });
+
+    carouselTrack.style.transform = `translateX(${-currentIndex * 100}%)`;
+}
+
+function goToSlide(index) {
+    currentIndex = index;
+    updateCarousel();
+    resetInterval();
+}
+
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % carouselData.length;
+    updateCarousel();
+}
+
+function resetInterval() {
+    clearInterval(intervalId);
+    intervalId = setInterval(nextSlide, 3000); // Changed to 3000ms (3 seconds)
+}
+
+function setupEventListeners() {
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') goToSlide((currentIndex - 1 + carouselData.length) % carouselData.length);
+    });
+
+    carousel.addEventListener('mouseover', () => clearInterval(intervalId));
+    carousel.addEventListener('mouseout', resetInterval);
+}
+
+setupCarousel();
+setupEventListeners();
+resetInterval();
+</script>

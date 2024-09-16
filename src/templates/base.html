@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block head_title %}Apple{% endblock head_title %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="">
+    {% include 'nav/navbar.html' %}
+    {% block content %}
+    {% endblock content %}
+    {% include 'footer/footer.html' %}
+</body>
+</html>

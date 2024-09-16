@@ -1,0 +1,81 @@
+{% load static %}
+{% block extra_head %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+            /* font-family: 'Inter', sans-serif; */
+        }
+    .glassmorphism {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+    .nav-transparent {
+            background: black;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border-bottom: none;
+        }
+</style>
+{% endblock %}
+<nav id="navbar" class="nav-transparent w-full fixed top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="flex items-center justify-between h-10">
+            <div class="flex items-center">
+                <a href="{% url 'home' %}" class="text-white">
+                    <!-- <svg class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm-1-13v8l6-4-6-4z"/>
+                    </svg> -->
+                    <img src="{% static 'images/logo_navbar.png' %}" alt="logo" class="h-6 w-100">
+                </a>
+            </div>
+            <div class="hidden md:block">
+                <div class="flex items-baseline space-x-4">
+                    <a href="{% url 'store' %}" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-light">Store</a>
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-light">Mac</a>
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-light">iPad</a>
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-light">iPhone</a>
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-light">Watch</a>
+                    <a href="#" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-light">Vision</a>
+                </div>
+            </div>
+            <div class="flex items-center">
+                <a href="#" class="text-gray-300 hover:text-white px-3 py-2">
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </a>
+                <a href="#" class="text-gray-300 hover:text-white px-3 py-2">
+                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+<script>
+    const navbar = document.getElementById('navbar');
+        let lastScrollTop = 0;
+
+        window.addEventListener('scroll', () => {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop) {
+                // Scrolling down
+                navbar.classList.remove('nav-transparent');
+                navbar.classList.add('glassmorphism');
+            } else {
+                // Scrolling up
+                if (scrollTop === 0) {
+                    navbar.classList.remove('glassmorphism');
+                    navbar.classList.add('nav-transparent');
+                }
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, false);
+</script>

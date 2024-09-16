@@ -1,0 +1,84 @@
+{% load static %}
+{% block extra_head %}
+{% endblock %}
+<section class="bg-white min-h-screen flex items-center justify-center p-4">
+    <div class="container mx-auto max-w-full">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Apple Watch Ultra 2 Card -->
+            <div class="bg-black text-white text-center rounded-xl overflow-hidden aspect-square flex flex-col">
+                <div class="p-16 flex-grow space-y-4">
+                    <div>
+                        <h1 class="text-3xl font-semibold">WATCH</h1>
+                        <h3 class="text-xl font-semibold text-orange-500">ULTRA 2</h3>
+                        <p class="text-lg">New finish. Never quit.</p>
+                        <p class="text-sm text-gray-400">Available starting 9.20</p>
+                    </div>
+                    
+                    <div class="flex space-x-4 justify-center">
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold">Learn more</button>
+                        <button class="border border-gray-600 text-blue-500 hover:bg-blue-600 hover:text-white px-4 py-2 rounded-full text-sm font-semibold">Pre-order</button>
+                    </div>
+                </div>
+                <div class="p-0 flex-shrink-0">
+                    <img src="{% static 'images/hero_cards/apple_watch.jpg' %}" alt="Apple Watch Ultra 2" class="w-full h-full rounded-lg object-cover"/>
+                </div>
+            </div>
+            
+            <!-- AirPods 4 Card -->
+            <div class="bg-gradient-to-br from-pink-200 to-blue-200 rounded-xl overflow-hidden aspect-square relative">
+                <img src="{% static 'images/hero_cards/airpods_people.jpg' %}" alt="Person wearing AirPods" class="absolute inset-0 w-full h-full object-cover"/>
+                <div class="relative p-6 h-full flex flex-col justify-end">
+                    <div class="space-y-2 text-white text-center">
+                        <h2 class="text-4xl font-bold">AirPods 4</h2>
+                        <p class="text-xl">Iconic. Now supersonic.</p>
+                        <p class="text-sm">Available with Active Noise Cancellation.</p>
+                        <p class="text-sm text-gray-700">Available starting 9.20</p>
+                    </div>
+                    <br>
+                    <div class="flex space-x-4 justify-center">
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold">Learn more</button>
+                        <button class="border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-4 py-2 rounded-full text-sm font-semibold">Pre-order</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apple Watch Ultra 2 Card -->
+            <div class="bg-black text-white text-center rounded-xl overflow-hidden aspect-square flex flex-col">
+                <div class="p-6 flex-grow space-y-4">
+                    <div>
+                        <h2 class="text-3xl font-semibold">WATCH</h2>
+                        <h3 class="text-xl font-semibold text-orange-500">ULTRA 2</h3>
+                        <p class="text-lg">New finish. Never quit.</p>
+                        <p class="text-sm text-gray-400">Available starting 9.20</p>
+                    </div>
+                    
+                    <div class="flex space-x-4 justify-center">
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold">Learn more</button>
+                        <button class="border border-gray-600 text-blue-500 hover:bg-blue-600 hover:text-white px-4 py-2 rounded-full text-sm font-semibold">Pre-order</button>
+                    </div>
+                </div>
+                <div class="p-2 flex-shrink-0">
+                    <img src="{% static 'images/hero_cards/apple_watch.jpg' %}" alt="Apple Watch Ultra 2" class="w-full h-full rounded-lg object-cover"/>
+                </div>
+            </div>
+            
+            <!-- AirPods 4 Card -->
+            <div class="bg-gradient-to-br from-pink-200 to-blue-200 rounded-xl overflow-hidden aspect-square relative">
+                <img src="{% static 'images/hero_cards/airpods_people.jpg' %}" alt="Person wearing AirPods" class="absolute inset-0 w-full h-full object-cover"/>
+                <div class="relative p-6 h-full flex flex-col justify-end">
+                    <div class="space-y-2 text-white text-center">
+                        <h2 class="text-4xl font-bold">AirPods 4</h2>
+                        <p class="text-xl">Iconic. Now supersonic.</p>
+                        <p class="text-sm">Available with Active Noise Cancellation.</p>
+                        <p class="text-sm text-gray-700">Available starting 9.20</p>
+                    </div>
+                    <br>
+                    <div class="flex space-x-4 justify-center">
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold">Learn more</button>
+                        <button class="border border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-4 py-2 rounded-full text-sm font-semibold">Pre-order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

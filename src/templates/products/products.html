@@ -1,0 +1,97 @@
+{% load static %}
+{% block extra_head %}
+<style>
+    .product-card {
+        transition: all 0.3s ease;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-image {
+        height: 140px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .product-card img {
+        transition: all 0.3s ease;
+    }
+
+    .product-card:hover img {
+        transform: scale(1.05);
+    }
+
+    .product-details {
+        height: 160px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #product-container {
+        transition: transform 0.5s ease;
+    }
+
+    .scroll-container {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        overflow-x: auto;
+    }
+
+    .scroll-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .fade-in {
+        animation: fadeIn 0.5s forwards;
+    }
+
+    .fade-out {
+        animation: fadeOut 0.5s forwards;
+    }
+
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    @keyframes fadeOut {
+        0% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+
+    .scroll-item {
+        scroll-snap-align: start;
+    }
+</style>
+{% endblock %}
+
+<!-- Products -->
+<div class="bg-gray-100 container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6">Loud and clear. <span class="text-gray-500">Unparalleled choices for rich, high-quality sound.</span></h1>
+    <div class="relative">
+        <div class="scroll-container overflow-hidden">
+            <div class="flex space-x-4 p-5" id="productScroller">
+                {% for product in products %}
+                <div class="product-card flex-none w-full md:w-1/4 bg-white rounded-lg shadow-md p-4">
+                    <a href="{{ product.link }}" class="block">
+                        <img src="{{ product.image.url }}" alt="{{ product.alt_text }}" class="w-full mb-4">
+                        {% if product.has_free_engraving %}
+                        <p class="text-sm text-red-600">Free Engraving</p>
+                        {% else %}
+                        <br>
+                        {% endif %}
+                        <h2 class="text-lg font-semibold mb-2">{{ product.name }}</h2>
+                        <p class="text-gray-700">{{ product.formatted_price }}</p>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+

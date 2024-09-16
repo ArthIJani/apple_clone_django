@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_title %}{{ page_title }} - {{ block.super }}{% endblock head_title %}
+{% block extra_head %}
+{% endblock %}
+{% block content %}
+
+{% include 'hero/hero.html' %}
+{% include 'hero/hero_cards.html' %}
+<section class="bg-gray-100">
+{% include 'products/new_products.html' %}
+{% include 'products/products.html' %}
+</section>
+{% include 'hero/imageCarousel.html' %}
+{% endblock content %}
