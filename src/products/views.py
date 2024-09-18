@@ -12,3 +12,11 @@ def store_view(request, *args, **kwargs):
         'products': products,
     }
     return render(request, html_template, my_context)
+
+def mac_view(request, *args, **kwargs): 
+    my_title = "Mac"
+    html_template = "mac/mac.html"
+    my_context = {
+        "page_title": my_title,
+    }
+    return render(request, html_template, my_context)
