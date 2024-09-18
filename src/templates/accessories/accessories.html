@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_title %}{{ page_title }} - {{ block.super }}{% endblock head_title %}
+{% block extra_head %}
+{% endblock %}
+{% block content %}
+<div class="min-h-screen bg-gray-100 flex flex-col">
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-gray-900">Accessories</h1>
+            <button class="text-gray-600 hover:text-gray-800 flex items-center">
+                Browse all
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex" style="background-image: url('{% static 'images/accessories.png' %}')">
+            <div class="w-1/2 pr-8">
+                <h2 class="text-5xl font-bold mb-4 leading-tight">Mix. Match.<br>MagSafe.</h2>
+                <p class="text-xl mb-6">Snap on a case, wallet, or wireless charger.</p>
+                <a href="#" class="text-blue-600 hover:underline text-lg">Shop MagSafe &gt;</a>
+            </div>
+            <div class="w-1/2">
+                <div class="bg-cover bg-center h-96 rounded-lg" style="background-image: url('{% static 'images/accessories.png' %}')">
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock content %}
