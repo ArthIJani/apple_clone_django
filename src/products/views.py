@@ -21,6 +21,14 @@ def mac_view(request, *args, **kwargs):
     }
     return render(request, html_template, my_context)
 
+def iphone_view(request, *args, **kwargs): 
+    my_title = "Mac"
+    html_template = "iphone/iphone.html"
+    my_context = {
+        "page_title": my_title,
+    }
+    return render(request, html_template, my_context)
+
 def accessories_view(request, *args, **kwargs): 
     my_title = "Accessories"
     html_template = "accessories/accessories.html"
