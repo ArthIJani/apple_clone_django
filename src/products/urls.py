@@ -5,5 +5,6 @@ urlpatterns = [
     path("store/", views.store_view, name='store'),
     path("mac/", views.mac_view, name='mac'),
     path("iphone/", views.iphone_view, name='iphone'),
+    path("ipad/", views.ipad_view, name='ipad'),
     path("accessories/", views.accessories_view, name='accessories'),
 ]
